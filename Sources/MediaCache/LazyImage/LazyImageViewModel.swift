@@ -13,6 +13,7 @@ struct ExampleURLLoader: URLLoader {
     func loadURL(forKey key: String) async throws -> URL? {
         URL(string: "https://example.com/\(key)")
     }
+    
 }
 
 extension LazyImageView {
