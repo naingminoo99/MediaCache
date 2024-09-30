@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct LazyImageView: View {
+public struct LazyImageView: View {
     
     let key: String
     var width: CGFloat? = nil
@@ -18,12 +18,12 @@ struct LazyImageView: View {
     
     @State private var viewModel: ViewModel
     
-    init(key: String,
-         urlLoader: URLLoader,
-         width: CGFloat? = nil,
-         height: CGFloat? = nil,
-         contentMode: SwiftUI.ContentMode = .fill,
-         placeholderName: String? = nil) {
+    public init(key: String,
+                urlLoader: URLLoader,
+                width: CGFloat? = nil,
+                height: CGFloat? = nil,
+                contentMode: SwiftUI.ContentMode = .fill,
+                placeholderName: String? = nil) {
         self.key = key
         self.width = width
         self.height = height
@@ -32,7 +32,7 @@ struct LazyImageView: View {
         self._viewModel = State(initialValue: ViewModel(key: key, urlLoader: urlLoader))
     }
     
-    var body: some View {
+    public var body: some View {
         KFImage.url(viewModel.url, cacheKey: key)
             .resizable()
             .placeholder { _ in
