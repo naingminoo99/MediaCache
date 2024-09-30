@@ -9,11 +9,10 @@ public protocol URLLoader {
     func loadURL(forKey key: String) async throws -> URL?
 }
 
-struct ExampleURLLoader: URLLoader {
-    func loadURL(forKey key: String) async throws -> URL? {
+public struct ExampleURLLoader: URLLoader {
+    public func loadURL(forKey key: String) async throws -> URL? {
         URL(string: "https://example.com/\(key)")
     }
-    
 }
 
 extension LazyImageView {
