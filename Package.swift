@@ -5,17 +5,36 @@ import PackageDescription
 
 let package = Package(
     name: "MediaCache",
+    platforms: [
+        .iOS(.v17),
+        .macOS(.v14)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "MediaCache",
             targets: ["MediaCache"]),
     ],
+    dependencies: [
+        .package(
+            url: "https://github.com/siteline/swiftui-introspect",
+            from: "1.2.0"
+        ),
+        .package(
+            url: "https://github.com/onevcat/Kingfisher",
+            from: "7.0.0"
+        )
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "MediaCache"),
+            name: "MediaCache",
+            dependencies: [
+                .product(name: "SwiftUIIntrospect", package: "swiftui-introspect"),
+                .product(name: "Kingfisher", package: "Kingfisher"),
+            ]
+        ),
         .testTarget(
             name: "MediaCacheTests",
             dependencies: ["MediaCache"]
