@@ -5,14 +5,16 @@ import SwiftUI
 import Swift
 import Kingfisher
 
-public protocol URLLoader {
+public protocol URLLoader: Sendable {
     func loadURL(forKey key: String) async throws -> URL?
 }
 
 public struct ExampleURLLoader: URLLoader {
     public func loadURL(forKey key: String) async throws -> URL? {
-        URL(string: "https://example.com/\(key)")
+        return URL(string: "https://example.com/\(key)")
     }
+    
+    public static let shared = ExampleURLLoader()
 }
 
 extension LazyImageView {
