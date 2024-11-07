@@ -17,10 +17,6 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/siteline/swiftui-introspect",
-            from: "1.2.0"
-        ),
-        .package(
             url: "https://github.com/onevcat/Kingfisher",
             from: "7.0.0"
         )
@@ -31,7 +27,6 @@ let package = Package(
         .target(
             name: "MediaCache",
             dependencies: [
-                .product(name: "SwiftUIIntrospect", package: "swiftui-introspect"),
                 .product(name: "Kingfisher", package: "Kingfisher"),
             ]
         ),
